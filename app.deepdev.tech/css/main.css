@@ -1,0 +1,265 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+  margin: 50px;
+}
+
+.row{
+    display: flex;
+    margin: 0px;
+}
+
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 480px;
+    font-family: sans-serif;
+    margin: 100px auto;
+    padding: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    /* align-self: center; */
+    /* align-content: center; */
+  }
+  #drop-area.highlight {
+    border-color: purple;
+  }
+  p {
+    margin-top: 0;
+  }
+  .my-form {
+    margin-bottom: 10px;
+  }
+  #gallery {
+    margin-top: 10px;
+  }
+  #gallery img {
+    width: 150px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .button {
+    display: inline-block;
+    padding: 10px;
+    background: #4285F4;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid white;
+    font-weight: 100;
+  }
+  .button:hover {
+    background: rgb(45, 122, 245);
+  }
+  #fileElem {
+    display: none;
+  }
+  
+
+.column {
+    float: left;
+    flex: 50%;
+    /* width: 30%; */
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.list-group-item {
+    text-align: center;
+    margin-top: 0px;
+    background: #2A2B2A;
+    color: white;
+    font-weight: 300;
+    font-size: 100%;
+    border-color: azure;
+    border-radius: 10px;
+    border-width: medium;
+}
+
+.big-item {
+        text-align: center;
+        margin-top: 0px;
+        background:black;
+        color: white;
+        font-weight: 300;
+        font-stretch: ultra-expanded;
+        font-size: 150%;
+        border-color: azure;
+        border-radius: 10px;
+        /* border-top-left-radius: 20px; */
+        border-width: medium;
+    }
+
+    .title-item {
+        text-align: center;
+        margin-top: 0px;
+        /* background:#0F9D58; */
+        background: #5f51fb;
+        color: white;
+        font-weight: 500;
+        font-stretch: ultra-expanded;
+        font-size: 200%;
+        border-color: azure;
+        border-radius: 10px;
+        /* border-top-left-radius: 20px; */
+        border-width: medium;
+    }
+
+
+
+
+.still-item {
+/*
+    background: #5f51fb;
+    color: white;
+    font-weight: 500;
+    font-size: 150%;
+    margin-top: -1px;
+    border-radius: 5px;
+*/
+    
+    text-align: center;
+    margin-top: 0px;
+    background: #4285F4;
+    color: white;
+    font-weight: 300;
+    font-size: 100%;
+    border-color: azure;
+    border-radius: 10px;
+    border-width: medium;
+/*    font-family: "Arimo", sans-serif;*/
+}
+
+/* trashcan */
+#droppable {
+  border: 2px dashed red;
+  min-height: 100px;
+  position: relative;
+}
+
+ #droppable::before {
+  color: #ccc;
+  font-size: 40px;
+  content: 'Trash';
+  display: block;
+  text-align: center;
+  padding-top: 15px;
+} 
+
+#droppable > * {
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px dashed #060;
+  position: absolute;
+  line-height: 70px;
+  /* font-size: 50px; */
+  text-align: center;
+  text-decoration: line-through;
+}
+
+
+.layer-item{
+    background: #2A2B2A;
+    color: white;
+    font-weight: 500;
+    font-size: 150%;
+    border-radius: 10px;
+}
+
+.red-item{
+    background: #960200;
+    color: white;
+    font-weight: 500;
+    font-size: 150%;
+}
+
+.misc-item{
+    background: #384E77;
+    color: white;
+    font-weight: 500;
+    font-size: 150%;
+}
+
+h5 {
+    font-weight: bolder;
+    margin-bottom: 1%;
+    margin-top: 0;
+    font-size: 200%;
+}
+
+input {
+    width: 50px;
+    color: black;
+    border-style: hidden;
+    border-radius: 3px;
+    text-align: center;
+}
+
+#code {
+  color: black;
+  border-style: hidden;
+  border-radius: 5px;
+  text-align: left;
+  width: 480px;
+  font-family: monospace;
+  font-size: 80%;
+  margin: 100px auto;
+  padding: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  /* max-width: auto; */
+}
+
+.locked {
+    background-color: dimgray
+}
+
+
+.dropdown {
+    color: black;
+/*
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    text-align-last: center;
+*/
+    margin-top: 3px;
+    width: 100px;
+    border-style: hidden;
+    border-radius: 3px;
+    text-align: center;
+}
+
+html *
+{
+/*    font-family: "Montserrat", sans-serif;*/
+/*    font-family: "Arimo", sans-serif;*/
+    font-family: "Open Sans", sans-serif;
+    
+/*    font-family: "Proxima Nova", sans-serif;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

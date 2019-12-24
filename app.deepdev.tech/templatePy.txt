@@ -1,0 +1,64 @@
+# ===== DeepDev | Initialization ===== #
+
+#Imports
+import keras
+from keras import backend as K
+from keras.models import Sequential
+from keras.layers import Activation
+from keras.layers.core import Dense
+from keras.optimizers import *
+from keras.metrics import *
+from keras.utils import to_categorical
+from keras.utils import np_utils
+
+
+# ===== DeepDev | Stage 1: Load ===== #
+
+# --- Dataset --- #
+
+
+
+# --- Preprocessing --- #
+#Shaping
+X_train = X_train.reshape(NUM_TRAIN_SAMPLES, NUM_FEATURES)
+X_test = X_test.reshape(NUM_TEST_SAMPLES, NUM_FEATURES)
+
+#One-Hot-Encoding
+Y_train = np_utils.to_categorical(y_train, NUM_CLASSES)
+Y_test = np_utils.to_categorical(y_test, NUM_CLASSES)
+
+#Normalization
+X_train = X_train.astype('float32')
+X_test = X_test.astype('float32')
+X_train /= 255
+X_test /= 255
+
+
+# ===== DeepDev | Stage 2: Build ===== #
+
+# --- Initialize --- #
+model = Sequential()
+
+# --- Layers --- #
+
+
+# ===== DeepDev | Stage 3: Train ===== #
+
+# --- Compilation --- #
+model.compile(optimizer=PARAM_OPTIMIZER,
+              loss=PARAM_LOSS,
+              metrics=['accuracy'])
+
+# --- Training --- #
+model.fit(x=X_train, y=Y_train, validation_split=PARAM_VALIDATION_SPLIT, batch_size=PARAM_BATCH_SIZE, epochs=PARAM_EPOCHS, verbose=PARAM_VERBOSE, shuffle=PARAM_SHUFFLE)
+
+
+# ===== DeepDev | Exporting the Model ===== #
+
+#Export to JSON
+model_json = model.to_json()
+with open("model.json", "w") as json_file:
+    json_file.write(model_json)
+
+#Export to h5
+model.save('model.h5')

@@ -1,0 +1,265 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <!-- Latest Sortable -->
+  <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="https://kit.fontawesome.com/bb3ed086a0.js" crossorigin="anonymous"></script>
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+
+    <div class="container">
+
+      <div class="list-group-item title-item">
+        <h5><i class="fas fa-database"></i> Load </h5>
+      </div>
+      <br/>
+      <div class="list-group-item big-item" style="background-color:#4285F4;">
+        <br/>
+        <h5>
+          Choose a Dataset:
+        </h5>
+        <select class="dropdown" name="dataset" id="dataset" style="width: 300px; margin-top: 10px;">
+          <option value="mnist">Handwritten Digits (MNIST)</option>
+          <option value="fashion_mnist">Fashion (MNIST)</option>
+          <option value="cifar10">CIFAR-10</option>
+          <option value="cifar100">CIFAR-100</option>
+          
+        </select>
+        
+        <div id="drop-area">
+            <form class="my-form">
+              <p><b><i class="fas fa-lock"></i> Upload Custom Dataset</b></p>
+              <p><i class="fas fa-info-circle"></i> Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>
+              <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+              <label class="button" onclick="javascript:alert('Coming Soon: Uploading Datasets. \nAt the moment, please select one of DeepDev\'s existing datasets.');"><i class="fas fa-upload"></i> Upload</label>
+            </form>
+          </div>
+
+      </div>
+      
+    <br/>
+
+    <hr>
+    <br/>
+        
+  
+  
+
+
+          <!-- networkList -->
+
+    <div class="list-group-item title-item">
+      <h5><i class="fas fa-tools"></i> Build </h5>
+    </div>
+    <br/>
+
+    <div class="row">
+      <div class = "column" style="margin-right: 2%; border-radius: 10px;">
+          <div class="list-group-item big-item" style="background: #0F9D58;">
+            <h5><i class="fas fa-bars"></i> Network <i class="fas fa-bars"></i></h5>
+          </div>
+          <div class="list-group-item still-item"><h5 style="margin-bottom: 2px !important">Input Layer</h5></div> 
+          <div id="networkGroup" class="list-group" style="margin: 0px">
+              <div class="list-group-item" id="dense"><h5><i class="fas fa-arrows-alt"></i> Dense Layer</h5>
+                  Number of Nodes: <input type="number" min="1" step="1" name="num_nodes" value="256"/> <br/>
+                  Activation: <select class="dropdown" name="activation">
+                    <option value="relu">ReLU</option>
+                    <option value="sigmoid">Sigmoid</option>
+                    <option value="linear">None</option>
+                    <option value="tanh">tanh</option>
+                    <option value="elu">elu</option>
+                    <option value="selu">selu</option>
+                    <option value="softplus">softplus</option>
+                    <option value="softsign">softsign</option>
+                    <option value="hard_sigmoid">hard_sigmoid</option>
+                    <option value="exponential">exponential</option>
+                  </select>
+              </div>
+              
+              
+
+          </div>
+        <div class="list-group-item still-item"><h5>Output Layer</h5>
+                  Activation: <select id="output-activation" class="dropdown" name="activation">
+            <option value="softmax">Softmax</option>
+            <option value="linear">Linear</option>
+                  </select>
+        </div>
+        <div
+        class="list-group-item still-item" 
+        style="background-color:#DB4437;">
+        <h5><i class="fas fa-cog"></i> Training</h5>
+          Loss Function: <select class="dropdown" id="loss" name="loss" style="width: 125px;">
+            <option value="categorical_crossentropy">Cross Entropy</option>
+            <option value="mean_squared_error">Mean Squared Error</option>
+            <option value="sparse_categorical_crossentropy">Sparse Cross Entropy</option>
+            <option value="mean_absolute_error">Mean Absolute Error</option>
+            <option value="mean_absolute_percentage_error">Mean Absolute Percentage Error</option>
+            <option value="mean_absolute_logarithmic_error">Mean Absolute Logarithmic Error</option>
+            <option value="categorical_hinge">Hinge</option>
+
+            <option value="Linear">linear</option>
+                  </select>
+                  <br/>
+          Optimizer: <select style="margin-bottom: 7px;"class="dropdown" id="optimizer" name="optimizer">
+              <option value="adam">ADAM</option>
+              <option value="sgd">SGD</option>
+              <option value="rmsprop">RMSprop</option>
+              <option value="adadelta">Adadelta</option>
+              <option value="adamax">Adamax</option>
+              <option value="Nadam">Nadam</option>
+
+                    </select><br/>
+          Epochs: <input id="epochs" type="number" min="1" step="1" value="30"/> 
+          
+          Batch Size: <input id="batch-size" type="number" min="1" step="1" value="128"/>
+          <br/>
+          Validation Split: <input style="margin-top: 3px;"id="validation-split" type="number" min="0.00" max="1.00" step="0.01" value="0.10"/>
+        </div>
+      </div>
+    
+        <br/>      
+        <hr>
+        <br/>
+
+        
+        
+         
+      <!-- toolbar -->
+      <div class = "column" style="width: auto;">  
+          <!-- layerGroup -->
+          <div class="list-group-item big-item">
+              <h5>ToolBox</h5>
+            </div>
+          <div id="layerGroup" class="list-group" style="margin-bottom: 0px;">
+              <div class="list-group-item" id="dense"><h5><i class="fas fa-arrows-alt"></i> Dense Layer</h5>
+                  Number of Nodes: <input type="number" min="1" step="1" value="256"/> <br/>
+                  Activation: <select class="dropdown" name="activation">
+                    <option value="relu">ReLU</option>
+                    <option value="sigmoid">Sigmoid</option>
+                    <option value="linear">None</option>
+                    <option value="tanh">tanh</option>
+                    <option value="elu">elu</option>
+                    <option value="selu">selu</option>
+                    <option value="softplus">softplus</option>
+                    <option value="softsign">softsign</option>
+                    <option value="hard_sigmoid">hard_sigmoid</option>
+                    <option value="exponential">exponential</option>
+                  </select>
+              </div>
+              
+              <div class="list-group-item locked"><h5><i class="fas fa-lock"></i> Convolutional Layer</h5>
+                  Type: <select class="dropdown" name="type">
+                    <option value="1D">1D</option>
+                    <option value="2D">2D</option>
+                    <option value="3D">3D</option> 
+                  </select><br/>
+                  Filters: <input type="text" style = "margin-top: 3px" name="filters" value="N/A"/>  
+                  Kernal: <input type="text" style = "margin-top: 3px" name="kernal_size" value="N/A"/> <br/>
+                  Activation: <select class="dropdown" name="activation">
+                    <option value="relu">ReLU</option>
+                    <option value="sigmoid">Sigmoid</option>
+                    <option value="linear">None</option>
+                    <option value="tanh">tanh</option>
+                    <option value="elu">elu</option>
+                    <option value="selu">selu</option>
+                    <option value="softplus">softplus</option>
+                    <option value="softsign">softsign</option>
+                    <option value="hard_sigmoid">hard_sigmoid</option>
+                    <option value="exponential">exponential</option>
+                  </select>
+              </div>
+              
+          </div>
+        <!--miscGroup-->
+        <div id="miscGroup" class="list-group">
+           
+            <div class="list-group-item misc-item" id="dropout">
+              <i class="fas fa-arrows-alt"></i> Dropout<br/>
+              <span style="font-size: small;">Rate: <input type="number" min = "0" max ="1" step="0.01" name="num_nodes" value="0.20"/></span><br/>
+            </div>
+            <div class="list-group-item misc-item locked"><i class="fas fa-lock"></i> Flatten</div>
+            <div class="list-group-item misc-item locked"><i class="fas fa-lock"></i> Noise</div>
+            <div class="list-group-item misc-item locked"><i class="fas fa-lock"></i> Avg Pool</div>
+            <div class="list-group-item misc-item locked"><i class="fas fa-lock"></i> Max Pool</div>
+
+        </div>
+
+        <div id="droppable" class="list-group">
+            <!-- <div class="list-group-item">foo</div> -->
+          </div>
+      </div>
+    </div>
+    <br/>
+    <hr>
+    <br/>
+    <br/>
+    <!-- generate -->
+    <div class="list-group-item title-item">
+      <h5><i class="fas fa-cogs"></i> Generate </h5>
+    </div>
+    <br/>
+    <div class="list-group-item big-item" style="background-color:#4285F4;">
+      <br/>
+      <!-- <textarea id="code" onClick="this.setSelectionRange(0, this.value.length)" readonly=false rows="10" cols="60"></textarea> -->
+      <textarea id="code" onClick="this.setSelectionRange(0, this.value.length)" readonly=false rows="15"></textarea>
+      
+      <br/>
+      Type: <select class="dropdown" id="type-code" style="width: 350px;">
+        <option value=".py">Python (Raw)</option>        
+        <option value=".ipynb">Jupyter Notebook (Formatted)</option>
+      </select><br/>
+      <i class="fas fa-sync-alt" style="margin-top: 20px; margin-bottom: 20px;"></i> Automatically Update Code:<input id="auto-update" type="checkbox" />
+      
+      
+      <br/>
+      <label class="button" style="margin-right: 10px;" id="generate"><i class="fas fa-code"></i> Convert to Code</label> 
+      <label class="button" id="download"><i class="fas fa-download"></i> Download</label>
+      <br/><br/>
+      <!-- <div id="drop-area">
+          <form class="my-form">
+            <p><b><i class="fas fa-lock"></i> Upload Custom Dataset</b></p>
+            <p><i class="fas fa-info-circle"></i> Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>
+            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+            <label class="button" for="fileElem">Upload</label>
+          </form>
+        </div> -->
+
+    </div>
+
+      <footer>
+        <br/>
+          <hr>
+        <p>&copy; DeepDev 2019</p>
+      </footer>
+    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>') </script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Open Sans">
+        <script src="js/main.js"></script>
+    </body>
+</html>
+

@@ -1,0 +1,299 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "PARAM_NAME",
+      "provenance": [],
+      "collapsed_sections": [],
+      "toc_visible": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "cx9yPe5LcHw-",
+        "colab_type": "text"
+      },
+      "source": [
+        "#**DeepDev** | Initialization"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "XxpPczAQr9Qs",
+        "colab_type": "text"
+      },
+      "source": [
+        "####Imports"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "wxCek3UmN1S3",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "import keras\n",
+        "from keras import backend as K\n",
+        "from keras.models import Sequential\n",
+        "from keras.layers import Activation\n",
+        "from keras.layers.core import Dense\n",
+        "from keras.optimizers import *\n",
+        "from keras.metrics import *\n",
+        "from keras.utils import to_categorical\n",
+        "from keras.utils import np_utils"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "hWKQijAXQj1a",
+        "colab_type": "text"
+      },
+      "source": [
+        "#**DeepDev** | Stage 1: Load"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "yp2h_yyvr2nq",
+        "colab_type": "text"
+      },
+      "source": [
+        "####Dataset"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_-esyj4bPAfm",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ih5BTjWwsFdT",
+        "colab_type": "text"
+      },
+      "source": [
+        "####Preprocessing"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "1-j1pRovru6U",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "#Shaping\n",
+        "X_train = X_train.reshape(NUM_TRAIN_SAMPLES, NUM_FEATURES)\n",
+        "X_test = X_test.reshape(NUM_TEST_SAMPLES, NUM_FEATURES)\n",
+        "\n",
+        "#One-Hot-Encoding\n",
+        "Y_train = np_utils.to_categorical(y_train, NUM_CLASSES)\n",
+        "Y_test = np_utils.to_categorical(y_test, NUM_CLASSES)\n",
+        "\n",
+        "#Normalization\n",
+        "X_train = X_train.astype('float32')\n",
+        "X_test = X_test.astype('float32')\n",
+        "X_train /= 255\n",
+        "X_test /= 255"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "E2rpKyV0Q_oB",
+        "colab_type": "text"
+      },
+      "source": [
+        "#**DeepDev** | Stage 2: Build"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "2J9o7G7XwDvV",
+        "colab_type": "text"
+      },
+      "source": [
+        "####Initalize"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "rVaLLRhCUPoG",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "model = Sequential()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "yoCxWwoWjqbK",
+        "colab_type": "text"
+      },
+      "source": [
+        "####Layers"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "M1oQpPuRxKbn",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "JndmL5GkZez1",
+        "colab_type": "text"
+      },
+      "source": [
+        "#**DeepDev** | Stage 3: Train"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QH-Es884uSPe",
+        "colab_type": "text"
+      },
+      "source": [
+        "####Compilation"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "9bHHPfmMuVjl",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "model.compile(optimizer=PARAM_OPTIMIZER,\n",
+        "              loss=PARAM_LOSS,\n",
+        "              metrics=['accuracy'])"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "lTIwB1rwuUAy",
+        "colab_type": "text"
+      },
+      "source": [
+        "####Training"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Ow3NL9YEZj2i",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "model.fit(x=X_train, y=Y_train, validation_split=PARAM_VALIDATION_SPLIT, batch_size=PARAM_BATCH_SIZE, epochs=PARAM_EPOCHS, verbose=PARAM_VERBOSE, shuffle=PARAM_SHUFFLE)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "5RM7QypPeZo5",
+        "colab_type": "text"
+      },
+      "source": [
+        "#**DeepDev** | Exporting the Model"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "EZOssO5NfKgq",
+        "colab_type": "text"
+      },
+      "source": [
+        "####Export to JSON"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "DNDSDCaDejKp",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "model_json = model.to_json()\n",
+        "with open(\"model.json\", \"w\") as json_file:\n",
+        "    json_file.write(model_json)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "GQVWCQvmi3m2",
+        "colab_type": "text"
+      },
+      "source": [
+        "####Export to h5"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Y_GlpsRyjF5T",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "model.save('model.h5')"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
