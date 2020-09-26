@@ -124,12 +124,11 @@ loadJSON(function(response) {
     });
     
     //input layer
-//    layersCell.
-    //todo change action function to activation
     var inputLayer = "model.add(Dense(PARAM_NUM_NODES, input_shape = ("+NUM_FEATURES+", ), activation=PARAM_ACTIVATION))";
     inputLayer = inputLayer.replaceAll("PARAM_NUM_NODES", layers[0].numNodes);
     inputLayer = inputLayer.replaceAll("PARAM_ACTIVATION", layers[0].activation);
     
+    //layersCell
     layersCell[0].source[0] = inputLayer + "\n";
     
     for(var i = 1; i < layers.length - 1; i++){
